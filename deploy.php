@@ -32,7 +32,7 @@ add('writable_dirs', []);
 
 set('keep_releases', 2);
 
-// Hosts
+// Hosts PRD
 host('production')
     ->setHostname('165.22.107.49')
     ->set('remote_user', 'root')
@@ -58,7 +58,7 @@ task('restart:workers', function () {
 
 task('restart:services', ['restart:web', 'restart:workers']);
 
-// [Optional] if deploy fails automatically unlock.
+// [Optional] if deploy fails automatically unlock
 after('deploy:failed', 'deploy:unlock');
 
 // Hooks
