@@ -21,5 +21,5 @@ host('165.22.107.49')
     ->set('deploy_path', '/var/www/leon-api');
 
 // Hooks
-
+//before('deploy:symlink', 'artisan:migrate');
 //after('deploy:failed', 'deploy:unlock');
