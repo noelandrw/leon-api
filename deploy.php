@@ -2,6 +2,7 @@
 namespace Deployer;
 
 require 'recipe/laravel.php';
+require 'contrib/npm.php';
 
 // Set SSH Multiplexing
 set('ssh_multiplexing', true);
@@ -62,3 +63,12 @@ after('deploy:failed', 'deploy:unlock');
 // Hooks
 before('artisan:config:cache', 'artisan:clear-compiled');
 before('deploy:success', 'restart:services');
+
+task('assets:generate', function() {
+    cd('{{release_path}}');
+    run('npm install');
+    run('npm run dev');
+  })->desc('Assets generation');
+
+//after('deploy:update_code', 'npm:install');
+after('npm:install','assets:generate');
