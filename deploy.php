@@ -35,7 +35,7 @@ set('keep_releases', 2);
 // Hosts
 host('production')
     ->setHostname('165.22.107.49')
-    ->set('remote_user', 'deployer')
+    ->set('remote_user', 'root')
     ->set('deploy_path', '/var/www/{{application}}')
     ->set('port', 22)
     ->setLabels([
